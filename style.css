@@ -1,0 +1,523 @@
+/* ─── Reset ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Scroll ────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Base & Background ─────────────────────────────────────────────────── */
+body {
+  font-family: 'Inter', sans-serif;
+  
+  /* Storyboard / Graph Paper Background */
+  background-color: #faf9f5; /* Warm paper tone */
+  background-image: 
+    linear-gradient(#e2e8f0 1px, transparent 1px),
+    linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: center top;
+  
+  color: #111;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Red notebook margin line spanning the whole page */
+body::before {
+  content: '';
+  position: fixed;
+  left: max(24px, calc(50% - 440px)); /* Stays on the left margin of the content */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #fca5a5; /* Red ink */
+  z-index: -1;
+}
+
+::selection {
+  background: #fef08a; /* Highlighter yellow */
+  color: #111;
+}
+
+/* ─── Layout ────────────────────────────────────────────────────────────── */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 72px 24px 120px;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────── */
+.banner-container {
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center; /* Centers the banner naturally */
+}
+.top-banner {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 48px;
+  margin-bottom: 64px;
+  border-bottom: 4px dashed #cbd5e1; /* Looks like a perforated tear line */
+  position: relative;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.profile-pic {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid #111;
+  box-shadow: 4px 4px 0px #111;
+  object-fit: cover;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+/* Tape sticker holding the header */
+.header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  width: 80px;
+  height: 24px;
+  background: rgba(253, 224, 71, 0.8); /* Yellow masking tape */
+  transform: rotate(3deg);
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.my-name {
+  font-family: 'Lora', serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+  
+  /* Hollow outlined text for an artistic, incomplete sketch feel */
+  color: transparent;
+  -webkit-text-stroke: 2px #111;
+  transition: color 0.3s;
+}
+
+/* Fills with solid color on hover like filling in a drawing */
+.my-name:hover {
+  color: #111;
+}
+
+.my-title {
+  font-size: 1.2rem;
+  color: #111;
+  font-weight: 700;
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  padding: 6px 12px;
+  transform: rotate(-1deg); /* Slight organic tilt */
+  align-self: flex-start;
+}
+
+/* Availability badge */
+.status-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border: 2px solid #111;
+  background: #a7f3d0; /* Mint green */
+  border-radius: 40px; /* Pill shape */
+  align-self: flex-start;
+  margin-top: 8px;
+  transform: rotate(1deg);
+  box-shadow: 4px 4px 0px #111;
+}
+
+.green-dot {
+  display: none;
+}
+
+.status-text {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #111;
+  text-transform: uppercase;
+}
+
+/* ─── Sections ──────────────────────────────────────────────────────────── */
+.section {
+  margin-bottom: 72px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 72px;
+}
+
+.skills-grid .split-section {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #111;
+  font-weight: 800;
+  margin-bottom: 32px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  
+  /* Marker highlighter effect */
+  background: linear-gradient(180deg, transparent 55%, #93c5fd 55%);
+  padding: 0 4px;
+}
+
+/* ─── About ─────────────────────────────────────────────────────────────── */
+.about-text {
+  font-size: 1.15rem;
+  color: #222;
+  font-weight: 500;
+  line-height: 1.7;
+  padding: 32px;
+  background: #fff;
+  border: 2px solid #111;
+  box-shadow: 8px 8px 0px #111;
+  position: relative;
+}
+
+/* "Staple" effect in the corner */
+.about-text::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 16px;
+  height: 4px;
+  background: #94a3b8;
+  border: 1px solid #475569;
+  transform: rotate(-45deg);
+}
+
+.about-text strong {
+  background: #fef08a; /* Yellow highlighter */
+  padding: 0 4px;
+}
+.about-text em {
+  font-style: italic;
+  font-family: 'Lora', serif; /* Mix serif for emphasis */
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* ─── Skill Tags (Masking Tape Style) ───────────────────────────────────── */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.skill-tag {
+  color: #111;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: monospace; /* Typewriter/label maker feel */
+  text-transform: uppercase;
+  background: #fde047; /* Yellow tape */
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  cursor: default;
+  transition: transform 0.2s;
+}
+
+/* Randomize tape angles and colors slightly for organic feel */
+.skill-tag:nth-child(4n+1) { transform: rotate(-2deg); background: #fde047; }
+.skill-tag:nth-child(4n+2) { transform: rotate(1deg); background: #bae6fd; } /* Blue tape */
+.skill-tag:nth-child(4n+3) { transform: rotate(-1deg); background: #fecdd3; } /* Pink tape */
+.skill-tag:nth-child(4n+4) { transform: rotate(2deg); background: #e2e8f0; } /* Grey tape */
+
+.skill-tag:hover {
+  transform: scale(1.1) rotate(0deg);
+  z-index: 2;
+}
+
+/* ─── Core Competencies ─────────────────────────────────────────────────── */
+.competency {
+  padding: 0 0 32px 0;
+  margin-bottom: 32px;
+  border-bottom: 2px dashed #cbd5e1;
+}
+
+.competency:last-child {
+  border-bottom: none;
+}
+
+.competency-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Custom bullet for competencies */
+.competency-title::before {
+  content: '★';
+  color: #f87171;
+  font-size: 1.2rem;
+}
+
+.competency-list {
+  list-style: none;
+  padding-left: 28px;
+}
+
+.competency-list > li {
+  font-size: 1.1rem;
+  color: #111;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.competency-list > li em {
+  font-style: normal;
+  font-weight: 800;
+  border-bottom: 3px solid #111;
+  margin-right: 8px;
+}
+
+.competency-list li ul {
+  margin-top: 12px;
+  padding-left: 16px;
+  list-style: none;
+}
+
+/* Arrow bullets for sub-items */
+.competency-list li ul li {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 8px;
+  position: relative;
+}
+.competency-list li ul li::before {
+  content: '→';
+  position: absolute;
+  left: -20px;
+  color: #3b82f6; /* Blueprint blue */
+  font-weight: 800;
+}
+
+/* ─── Project Cards (Polaroid / Cutout Style) ───────────────────────────── */
+.card-container {
+  display: grid;
+  gap: 32px;
+}
+
+.project-card {
+  padding: 32px;
+  background: #fff;
+  border: 2px solid #111;
+  box-shadow: 8px 8px 0px #111;
+  position: relative;
+}
+
+.project-card:nth-child(odd) { transform: rotate(-1deg); }
+.project-card:nth-child(even) { transform: rotate(1deg); }
+
+.project-card:hover {
+  transform: rotate(0deg) translate(-2px, -2px);
+  box-shadow: 10px 10px 0px #111;
+  z-index: 2;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.project-year {
+  font-family: monospace;
+  font-size: 1rem;
+  color: #fff;
+  background: #ef4444; /* Red stamp */
+  font-weight: 700;
+  padding: 4px 8px;
+  transform: rotate(3deg);
+}
+
+.project-description {
+  font-size: 1.05rem;
+  color: #222;
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+/* ─── Video Gallery ─────────────────────────────────────────────────────── */
+.video-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.video-card {
+  border: 2px solid #111;
+  background: #fff;
+  box-shadow: 8px 8px 0px #111;
+  padding: 12px 12px 24px 12px; /* Thicker bottom padding like a polaroid */
+  transition: all 0.2s;
+  position: relative;
+}
+
+/* Sticky tape effect for videos */
+.video-card::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 60px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.video-card:nth-child(2n) { transform: rotate(1.5deg); }
+.video-card:nth-child(3n) { transform: rotate(-1deg); }
+.video-card:nth-child(5n) { transform: rotate(2deg); }
+
+.video-card:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 12px 12px 0px #111;
+  z-index: 5;
+}
+
+.video-card video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 2px solid #111;
+}
+
+.video-title {
+  margin-top: 16px;
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ─── Contact ───────────────────────────────────────────────────────────── */
+.contact-box {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #111; /* Invert contact box for contrast */
+  color: #fff;
+  transform: rotate(-1deg);
+}
+
+.contact-box p {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.contact-box a {
+  color: #93c5fd; /* Light blue link on dark */
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.contact-box a:hover {
+  color: #fde047;
+  text-decoration-color: #fde047;
+}
+
+/* ─── Footer ────────────────────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  margin-top: 80px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #64748b;
+  border-top: 2px solid #111;
+}
+
+/* ─── Mobile ────────────────────────────────────────────────────────────── */
+@media (max-width: 800px) {
+  body::before {
+    left: 12px; /* Pull margin line tighter on mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 48px 16px 80px;
+  }
+  .my-name {
+    font-size: 2.5rem;
+  }
+  .header-profile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .skills-grid .split-section {
+    margin-bottom: 48px;
+  }
+  .skills-grid .split-section:last-child {
+    margin-bottom: 0;
+  }
+  .project-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .project-card, .video-card {
+    transform: none !important; /* Disable rotation on tiny screens to save space */
+  }
+}
