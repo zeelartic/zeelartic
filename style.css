@@ -35,8 +35,8 @@ body::before {
   left: max(24px, calc(50% - 440px)); /* Stays on the left margin of the content */
   top: 0;
   bottom: 0;
-  width: 2px;
-  background-color: #fca5a5; /* Red ink */
+  width: 6px;
+  background-color: #ef4444; /* Deeper, heavier red */
   z-index: -1;
 }
 
