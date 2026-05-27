@@ -28,17 +28,7 @@ body {
   position: relative;
 }
 
-/* Red notebook margin line spanning the whole page */
-body::before {
-  content: '';
-  position: fixed;
-  left: max(24px, calc(50% - 440px)); /* Stays on the left margin of the content */
-  top: 0;
-  bottom: 0;
-  width: 6px;
-  background-color: #ef4444; /* Deeper, heavier red */
-  z-index: -1;
-}
+
 
 ::selection {
   background: #fef08a; /* Highlighter yellow */
@@ -481,13 +471,6 @@ body::before {
   font-size: 0.9rem;
   color: #64748b;
   border-top: 2px solid #111;
-}
-
-/* ─── Mobile ────────────────────────────────────────────────────────────── */
-@media (max-width: 800px) {
-  body::before {
-    left: 12px; /* Pull margin line tighter on mobile */
-  }
 }
 
 @media (max-width: 600px) {
