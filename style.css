@@ -14,8 +14,8 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   
-  /* Storyboard / Graph Paper Background */
-  background-color: #faf9f5; /* Warm paper tone */
+  
+  background-color: #faf9f5;
   background-image: 
     linear-gradient(#e2e8f0 1px, transparent 1px),
     linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
@@ -177,7 +177,6 @@ body {
   letter-spacing: -0.02em;
   display: inline-block;
   
-  /* Marker highlighter effect */
   background: linear-gradient(180deg, transparent 55%, #93c5fd 55%);
   padding: 0 4px;
 }
@@ -383,7 +382,7 @@ body {
   border: 2px solid #111;
   background: #fff;
   box-shadow: 8px 8px 0px #111;
-  padding: 12px 12px 24px 12px; /* Thicker bottom padding like a polaroid */
+  padding: 12px 12px 24px 12px; 
   transition: all 0.2s;
   position: relative;
 }
